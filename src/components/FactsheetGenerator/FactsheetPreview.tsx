@@ -67,10 +67,10 @@ const FactsheetPreview: React.FC<FactsheetPreviewProps> = ({
         description: 'Your factsheet has been downloaded.To again use Refresh the Page',
         duration: 3000,
       });
-         // Refresh the page after a slight delay
-    setTimeout(() => {
-      window.location.reload();
-    }, 1500);
+    //      // Refresh the page after a slight delay
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1500);
     } catch (error) {
       console.error('Error generating PDF:', error);
       
