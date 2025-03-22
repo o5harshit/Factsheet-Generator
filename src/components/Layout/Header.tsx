@@ -1,8 +1,16 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { createClient } from "@supabase/supabase-js";
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+// Initialize Supabase client
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL || "",
+  import.meta.env.VITE_SUPABASE_ANON_KEY || ""
+);
 
 const Header: React.FC = () => {
+ 
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -12,20 +20,20 @@ const Header: React.FC = () => {
           </div>
           <span className="font-semibold text-xl tracking-tight">Factsheet Generator</span>
         </div>
-        
+
         <nav>
           <ul className="flex space-x-6">
             <li>
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="text-gray-600 hover:text-factsheet-blue transition-colors duration-200"
               >
                 Home
               </Link>
             </li>
             <li>
-              <Link 
-                to="/preview" 
+              <Link
+                to="/preview"
                 className="text-gray-600 hover:text-factsheet-blue transition-colors duration-200"
               >
                 Preview
@@ -33,9 +41,13 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
+
+        {/* Authentication Button */}
+        
       </div>
     </header>
   );
 };
 
 export default Header;
+

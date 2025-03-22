@@ -32,7 +32,7 @@ export const generatePDF = async (factsheetData: FactsheetData, template: Factsh
     sections.forEach((section) => {
       if (section instanceof HTMLElement) {
         if (section.classList.contains('page-break-inside-avoid')) {
-          section.style.pageBreakInside = 'avoid';
+          section.style.breakInside = 'avoid';
         }
       }
     });
@@ -41,7 +41,7 @@ export const generatePDF = async (factsheetData: FactsheetData, template: Factsh
     const pageBreaks = document.querySelectorAll('.page-break-after');
     pageBreaks.forEach((section) => {
       if (section instanceof HTMLElement) {
-        section.style.pageBreakAfter = 'always';
+        section.style.breakAfter = 'always';
         section.style.marginBottom = '50px'; // Add extra space at the bottom of pages
       }
     });
@@ -117,13 +117,13 @@ export const generatePDF = async (factsheetData: FactsheetData, template: Factsh
             
             // Handle page break controls
             if (section.classList.contains('page-break-inside-avoid')) {
-              section.style.pageBreakInside = 'avoid';
+              section.style.breakAfter = 'avoid';
             }
             if (section.classList.contains('page-break-before')) {
-              section.style.pageBreakBefore = 'always';
+              section.style.breakAfter = 'always';
             }
             if (section.classList.contains('page-break-after')) {
-              section.style.pageBreakAfter = 'always';
+              section.style.breakAfter = 'always';
             }
           }
         });
@@ -135,8 +135,8 @@ export const generatePDF = async (factsheetData: FactsheetData, template: Factsh
           if (headingEl && headingEl.textContent && headingEl.textContent.includes('Risk & Return Metrics')) {
             if (section instanceof HTMLElement) {
               section.style.marginTop = '20px';
-              section.style.pageBreakBefore = 'always';
-              section.style.pageBreakInside = 'avoid';
+              section.style.breakBefore = 'always';
+              section.style.breakInside = 'avoid';
             }
           }
         });
