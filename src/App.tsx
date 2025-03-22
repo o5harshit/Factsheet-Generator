@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import Index from "./pages/Index";
+import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 
 // Lazy load the Preview page to improve initial load performance
@@ -52,7 +53,8 @@ const App = () => (
         <BrowserRouter>
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
-              <Route path="/" element={<Index />} />
+            <Route path="/" element={<LandingPage />} />
+              <Route path="/index" element={<Index />} />
               <Route path="/preview" element={<Preview />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
